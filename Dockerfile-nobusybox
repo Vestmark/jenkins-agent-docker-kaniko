@@ -1,6 +1,6 @@
 FROM gcr.io/kaniko-project/executor:v1.0.0 as kaniko
 
-FROM jenkins/jnlp-slave:alpine
+FROM jenkins/inbound-agent:alpine
 
 # By default, the JNLP3-connect protocol is disabled due to known stability
 # and scalability issues. You can enable this protocol using the
