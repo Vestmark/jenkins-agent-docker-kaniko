@@ -29,6 +29,7 @@ RUN apk add --no-cache --update \
 # Install additional packages
 RUN apk add --update --no-cache \
       curl \
+      coreutils \
       python3
 
 # Install the AWS CLI using the bundled installer
