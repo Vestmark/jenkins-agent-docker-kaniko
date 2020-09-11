@@ -1,6 +1,6 @@
-FROM gcr.io/kaniko-project/executor:v0.22.0 as kaniko
+FROM gcr.io/kaniko-project/executor:v1.0.0 as kaniko
 
-FROM busybox:1.31.0 as busybox
+FROM busybox:1.31.1 as busybox
 
 FROM jenkins/jnlp-slave:alpine
 
