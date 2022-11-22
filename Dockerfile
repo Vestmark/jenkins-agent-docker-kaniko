@@ -23,6 +23,14 @@ ENV JAVA_OPTS -XX:-UsePerfData
 # apk and kaniko must be run as root.
 USER root
 
+RUN wget https://github.com/AdoptOpenJDK/openjdk11-upstream-binaries/releases/download/jdk-11.0.16%2B8/OpenJDK11U-jdk_x64_linux_11.0.16_8.tar.gz
+
+RUN tar -xzf OpenJDK11U-jdk_x64_linux_11.0.16_8.tar.gz
+
+RUN ln -s /opt/java/openjdk-11.0.16_8 /usr/lib/jvm/openjdk-11.0.16_8
+
+RUN rm -f OpenJDK11U-jdk_x64_linux_11.0.16_8.tar.gz
+
 # Install minimally required packages
 RUN apk add --no-cache --update \
       build-base \
