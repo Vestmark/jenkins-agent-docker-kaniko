@@ -2,7 +2,7 @@ FROM gcr.io/kaniko-project/executor:v1.6.0 as kaniko
 
 FROM busybox:1.31.1 as busybox
 
-FROM jenkins/inbound-agent:latest-alpine-jdk8
+FROM jenkins/inbound-agent:4.7-1-alpine
 
 # By default, the JNLP3-connect protocol is disabled due to known stability
 # and scalability issues. You can enable this protocol using the
