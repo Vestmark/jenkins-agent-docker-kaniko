@@ -30,6 +30,7 @@ RUN apk add --no-cache --update \
 
 # Install additional packages
 RUN apk add --update --no-cache \
+      wget \
       curl \
       coreutils \
       python3
@@ -45,6 +46,17 @@ COPY --from=busybox /bin /busybox
 
 ENV PATH=/busybox:/kaniko:$PATH
 
+WORKDIR /opt/java
+
+RUN mkdir -p /usr/lib/jvm
+
+RUN wget https://github.com/AdoptOpenJDK/openjdk11-upstream-binaries/releases/download/jdk-11.0.16%2B8/OpenJDK11U-jdk_x64_linux_11.0.16_8.tar.gz
+
+RUN tar -xzf OpenJDK11U-jdk_x64_linux_11.0.16_8.tar.gz
+
+RUN ln -s /opt/java/openjdk-11.0.16_8 /usr/lib/jvm/openjdk-11.0.16_8
+
+RUN rm -f OpenJDK11U-jdk_x64_linux_11.0.16_8.tar.gz
 # Docker volumes include an entry in /proc/self/mountinfo. This file is used
 # when kaniko builds the list of whitelisted directories. Whitelisted
 # directories are persisted between stages and are not included in the final
