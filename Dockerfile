@@ -56,6 +56,10 @@ RUN tar -xzf OpenJDK11U-jdk_x64_linux_11.0.16_8.tar.gz
 
 RUN ln -s /opt/java/openjdk-11.0.16_8 /usr/lib/jvm/openjdk-11.0.16_8
 
+RUN sed 's+$JAVA_BIN $JAVA_OPTS+/usr/lib/jvm/openjdk-11.0.16_8/bin/java $JAVA_OPTS+g' /usr/local/bin/jenkins-agent > /usr/local/bin/jenkins-agent-java11
+
+RUN chmod +x /usr/local/bin/jenkins-agent-java11
+
 RUN rm -f OpenJDK11U-jdk_x64_linux_11.0.16_8.tar.gz
 # Docker volumes include an entry in /proc/self/mountinfo. This file is used
 # when kaniko builds the list of whitelisted directories. Whitelisted
