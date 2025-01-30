@@ -36,10 +36,10 @@ RUN apk add --update --no-cache \
       python3
 
 # Install the AWS CLI using the bundled installer
-RUN curl 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip' \
-      -o 'awscli-bundle.zip' && \
-      unzip awscli-bundle.zip && \
-      python3 ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+RUN curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' \
+      -o 'awscliv2.zip' && \
+      unzip awscliv2.zip && \
+      sudo ./aws/install
 
 COPY --from=kaniko /kaniko /kaniko
 COPY --from=busybox /bin /busybox
