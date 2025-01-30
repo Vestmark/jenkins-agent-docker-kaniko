@@ -39,7 +39,7 @@ RUN apk add --update --no-cache \
 RUN curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' \
       -o 'awscliv2.zip' && \
       unzip awscliv2.zip && \
-      sudo ./aws/install
+      ./aws/install
 
 COPY --from=kaniko /kaniko /kaniko
 COPY --from=busybox /bin /busybox
